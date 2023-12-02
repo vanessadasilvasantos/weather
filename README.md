@@ -6,12 +6,16 @@
 
 ## 🎯 Sobre o projeto
 
-O TypeWeather é um projeto de um app de clima, mostrando resultados de diversos lugare do mundo!
+O TypeWeather é um app de clima, mostrando resultados de diversos lugare do mundo!
 
 ## 💻 Tecnologias
 
 * [React.js](https://react.dev/)
 *  [React Native](https://reactnative.dev/)
+
+## ☁️ Api de clima
+
+* [OpenWeather](https://openweathermap.org/current)
 
 ## 🎨 Layout
 
@@ -20,3 +24,26 @@ Você pode acessar o layout do projeto [aqui.](https://www.figma.com/file/KDuzfR
 # Instalação
 
 Clone este repositório do projeto
+
+```sh 
+git clone https://github.com/vanessadasilvasantos/weather.git
+```
+
+Entre na pasta `weather`
+
+```sh 
+cd weather
+```
+
+## Instale as dependências
+
+```sh 
+npm install
+```
+
+# Comece sua jornada no weather usando o expo
+
+```sh 
+npm start
+```
+
