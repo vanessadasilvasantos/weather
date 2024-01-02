@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Seach from "./src/search/search";
-import Climate from "./src/climate/climate";
+import Seach from "./src/pages/search";
+import Climate from "./src/pages/climate";
 
 const Stack = createNativeStackNavigator();
 
