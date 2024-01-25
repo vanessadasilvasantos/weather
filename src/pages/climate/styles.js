@@ -5,13 +5,13 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#13131A",
     justifyContent: "center",
-    alignItems: "flex-start",
-    paddingLeft: 30,
-    position: "relative",
+    alignItems: "center",
   },
   descriptions: {
-    flexDirection: "row",
     justifyContent: "space-between",
+    width: "92%",
+    height: "6%",
+    flexDirection: "row",
   },
   cityName: {
     color: "#FAFAFA",
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   date: {
     fontSize: 12,
     color: "#FAFAFA",
-    marginBottom: 150,
+    marginBottom: "40%",
   },
   tempCity: {
     fontSize: 48,
@@ -29,10 +29,15 @@ export const styles = StyleSheet.create({
     fontWeight: "800",
     marginBottom: 15,
   },
+  tempContainer: {
+    position: "absolute",
+    top: "5%",
+    left: "14%",
+    justifyContent: "center",
+  },
   containerTemp: {
     flexDirection: "row",
-    alignItems: "flex-end",
-    gap: 100,
+    gap: 80,
   },
   imgTemp: {
     width: 100,
@@ -50,11 +55,9 @@ export const styles = StyleSheet.create({
   },
   descriptionText: {
     color: "#BFBFD4",
-    fontSize: 14,
-    borderLeftWidth: 1,
+    fontSize: 13,
     fontWeight: "700",
     marginLeft: 10,
-    paddingRight: 180,
   },
   containerDesc: {
     gap: 50,
@@ -62,7 +65,10 @@ export const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 12,
     marginBottom: 20,
+    height: "35%",
+    width: "89%",
     justifyContent: "center",
+    alignItems: "center",
   },
   valueDesc: {
     color: "#FAFAFA",
@@ -88,19 +94,16 @@ export const styles = StyleSheet.create({
   dayTemp: {
     flexDirection: "column",
     alignItems: "center",
+    width: "10%",
   },
   week: {
+    width: "89%",
+    marginBottom: "20%",
+    justifyContent: "center",
     backgroundColor: "#16161F",
     flexDirection: "row",
     padding: 10,
     borderRadius: 12,
-    gap: 30,
-  },
-  tempContainer: {
-    position: "absolute",
-    top: 70,
-    left: 60,
-    padding: 10,
-    marginBottom: 50,
+    gap: 40,
   },
 });

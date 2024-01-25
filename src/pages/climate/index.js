@@ -44,7 +44,13 @@ const BackWeatherIcon = ({ condition }) => {
   return (
     <Image
       source={iconSource}
-      style={{ borderRadius: 12, marginBottom: 50, width: 420, height: 400 }}
+      style={{
+        borderRadius: 12,
+        marginBottom: "5%",
+        marginTop: "25%",
+        width: "86%",
+        height: "40%",
+      }}
     />
   );
 };
@@ -90,8 +96,8 @@ export default function Climate() {
             weatherData.main.feels_like
           )}°C`}</Text>
         </View>
-        <View style={styles.descName}>
-          <View style={styles.descriptions}>
+        <View style={styles.descriptions}>
+          <View style={styles.descName}>
             <Image source={require("../../img/dayInformationIcon/rain.png")} />
             <Text style={styles.descriptionText}>Probabilidade de chuva </Text>
           </View>
