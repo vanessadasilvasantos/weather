@@ -4,6 +4,11 @@ import "moment/locale/pt-br";
 import moment from "moment/moment";
 import { styles } from "./styles";
 
+//components
+
+import Weekday from "../../components/Weekday";
+import TemperatureDescription from "../../components/TemperatureDescription";
+
 const isNight = moment().hour() >= 18 || moment().hour() < 6;
 
 moment().calendar;
@@ -60,6 +65,12 @@ export default function Climate() {
   const route = useRoute();
   const { weatherData, city } = route.params;
 
+  const minDay = Math.round(weatherData.main.temp_min);
+  const maxDay = Math.round(weatherData.main.temp_max);
+  const umidityValue = weatherData.main.humidity;
+  const windSpeed = Math.round(weatherData.wind.speed);
+  const thermalSensation = Math.round(weatherData.main.feels_like);
+
   return (
     <View style={styles.container}>
       <BackWeatherIcon condition={weatherData.weather[0].main} />
@@ -85,114 +96,64 @@ export default function Climate() {
       </View>
 
       <View style={styles.containerDesc}>
-        <View style={styles.descriptions}>
-          <View style={styles.descName}>
-            <Image
-              source={require("../../img/dayInformationIcon/temperature.png")}
-            />
-            <Text style={styles.descriptionText}>Sensação térmica</Text>
-          </View>
-          <Text style={styles.valueDesc}>{`${Math.round(
-            weatherData.main.feels_like
-          )}°C`}</Text>
-        </View>
-        <View style={styles.descriptions}>
-          <View style={styles.descName}>
-            <Image source={require("../../img/dayInformationIcon/rain.png")} />
-            <Text style={styles.descriptionText}>Probabilidade de chuva </Text>
-          </View>
-          <Text
-            style={styles.valueDesc}
-          >{`  ${weatherData.main.humidity}%`}</Text>
-        </View>
-        <View style={styles.descriptions}>
-          <View style={styles.descName}>
-            <Image source={require("../../img/dayInformationIcon/wind.png")} />
-            <Text style={styles.descriptionText}>Velocidade do vento</Text>
-          </View>
-          <Text style={styles.valueDesc}>{`${Math.round(
-            weatherData.wind.speed
-          )} km/h`}</Text>
-        </View>
-        <View style={styles.descriptions}>
-          <View style={styles.descName}>
-            <Image source={require("../../img/dayInformationIcon/drop.png")} />
-            <Text style={styles.descriptionText}>Umidade do ar</Text>
-          </View>
-          <Text style={styles.valueDesc}>
-            {`${weatherData.main.humidity}`}%
-          </Text>
-        </View>
-        <View style={styles.descriptions}>
-          <View style={styles.descName}>
-            <Image source={require("../../img/dayInformationIcon/sun.png")} />
-            <Text style={styles.descriptionText}>Índice UV</Text>
-          </View>
-          <Text style={styles.valueDesc}>{`5`}</Text>
-        </View>
+        <TemperatureDescription
+          image={require("../../img/dayInformationIcon/temperature.png")}
+          text="Sensação térmica"
+          value={`${thermalSensation}°C`}
+        />
+        <TemperatureDescription
+          image={require("../../img/dayInformationIcon/rain.png")}
+          text="Probabilidade de chuva"
+          value={`${umidityValue}%`}
+        />
+        <TemperatureDescription
+          image={require("../../img/dayInformationIcon/wind.png")}
+          text="Velocidade do vento"
+          value={`${windSpeed} km/h`}
+        />
+        <TemperatureDescription
+          image={require("../../img/dayInformationIcon/drop.png")}
+          text="Umidade do ar"
+          value={`${umidityValue}%`}
+        />
+        <TemperatureDescription
+          image={require("../../img/dayInformationIcon/sun.png")}
+          text="Índice UV"
+          value="5"
+        />
       </View>
 
       <View style={styles.week}>
-        <View style={styles.dayTemp}>
-          <Text style={styles.textDay}>{`${moment()
-            .add(1, "day")
-            .format("ddd")}`}</Text>
-          <Image source={require("../../img/iconDay/rainDay.png")} />
-          <Text style={styles.tempMaxDay}>{`${Math.round(
-            weatherData.main.temp_max
-          )}°C`}</Text>
-          <Text style={styles.tempMinDay}>{`${Math.round(
-            weatherData.main.temp_min
-          )}°C`}</Text>
-        </View>
-        <View style={styles.dayTemp}>
-          <Text style={styles.textDay}>{`${moment()
-            .add(2, "day")
-            .format("ddd")}`}</Text>
-          <Image source={require("../../img/iconDay/sunClouds.png")} />
-          <Text style={styles.tempMaxDay}>{`${Math.round(
-            weatherData.main.temp_max
-          )}°C`}</Text>
-          <Text style={styles.tempMinDay}>{`${Math.round(
-            weatherData.main.temp_min
-          )}°C`}</Text>
-        </View>
-        <View style={styles.dayTemp}>
-          <Text style={styles.textDay}>{`${moment()
-            .add(3, "day")
-            .format("ddd")}`}</Text>
-          <Image source={require("../../img/iconDay/sunClouds.png")} />
-          <Text style={styles.tempMaxDay}>{`${Math.round(
-            weatherData.main.temp_max
-          )}°C`}</Text>
-          <Text style={styles.tempMinDay}>{`${Math.round(
-            weatherData.main.temp_min
-          )}°C`}</Text>
-        </View>
-        <View style={styles.dayTemp}>
-          <Text style={styles.textDay}>{`${moment()
-            .add(4, "day")
-            .format("ddd")}`}</Text>
-          <Image source={require("../../img/iconDay/rainDay.png")} />
-          <Text style={styles.tempMaxDay}>{`${Math.round(
-            weatherData.main.temp_max
-          )}°C`}</Text>
-          <Text style={styles.tempMinDay}>{`${Math.round(
-            weatherData.main.temp_min
-          )}°C`}</Text>
-        </View>
-        <View style={styles.dayTemp}>
-          <Text style={styles.textDay}>{`${moment()
-            .add(5, "day")
-            .format("ddd")}`}</Text>
-          <Image source={require("../../img/iconDay/rainDay.png")} />
-          <Text style={styles.tempMaxDay}>{`${Math.round(
-            weatherData.main.temp_max
-          )}°C`}</Text>
-          <Text style={styles.tempMinDay}>{`${Math.round(
-            weatherData.main.temp_min
-          )}°C`}</Text>
-        </View>
+        <Weekday
+          day="1"
+          image={require("../../img/iconDay/sunClouds.png")}
+          maxDay={maxDay}
+          minDay={minDay}
+        />
+        <Weekday
+          day="2"
+          image={require("../../img/iconDay/sunClouds.png")}
+          maxDay={maxDay}
+          minDay={minDay}
+        />
+        <Weekday
+          day="3"
+          image={require("../../img/iconDay/sunClouds.png")}
+          maxDay={maxDay}
+          minDay={minDay}
+        />
+        <Weekday
+          day="4"
+          image={require("../../img/iconDay/rainDay.png")}
+          maxDay={maxDay}
+          minDay={minDay}
+        />
+        <Weekday
+          day="5"
+          image={require("../../img/iconDay/rainDay.png")}
+          minDay={minDay}
+          maxDay={maxDay}
+        />
       </View>
     </View>
   );

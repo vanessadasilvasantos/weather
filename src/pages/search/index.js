@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, Image, TextInput } from "react-native";
+import { Text, View, Image, TextInput } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { styles } from "./styles";
 
-export default function Seach() {
+export default function Search() {
   const navigation = useNavigation();
   const [weatherData, setWeatherData] = useState(null);
   const [city, setCity] = useState("");

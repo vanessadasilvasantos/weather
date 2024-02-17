@@ -1,7 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Seach from "./src/pages/search";
-import Climate from "./src/pages/climate";
+
+//components
+import Search from "./src/pages/Search";
+import Climate from "./src/pages/Climate";
+import Weekday from "./src/components/Weekday";
+import TemperatureDescription from "./src/components/TemperatureDescription";
 
 const Stack = createNativeStackNavigator();
 
@@ -10,8 +14,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Seach"
-          component={Seach}
+          name="Search"
+          component={Search}
           options={{
             title: "",
             headerTransparent: true,
@@ -24,6 +28,22 @@ export default function App() {
             title: "",
             headerTransparent: true,
             headerBackVisible: false,
+          }}
+        />
+        <Stack.Screen
+          name="Weekday"
+          component={Weekday}
+          options={{
+            title: "",
+            headerTransparent: true,
+          }}
+        />
+        <Stack.Screen
+          name="TemperatureDescription"
+          component={TemperatureDescription}
+          options={{
+            title: "",
+            headerTransparent: true,
           }}
         />
       </Stack.Navigator>
